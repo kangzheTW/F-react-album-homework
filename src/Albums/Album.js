@@ -12,20 +12,35 @@ class Album extends Component {
 
   componentDidMount() {
     const { album, showThumbnails } = this.props;
+    this.updateThumbnails(showThumbnails, album.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { showThumbnails, album } = this.props;
+    if (prevProps.showThumbnails !== showThumbnails || prevProps.album.id !== album.id) {
+      this.updateThumbnails(showThumbnails, album.id);
+    }
+  }
+
+  updateThumbnails = (showThumbnails, albumId) => {
     if (showThumbnails) {
-      fetchPhotos(album.id).then((photos) => {
+      fetchPhotos(albumId).then((photos) => {
         this.setState({
           photos,
         });
       });
+    } else {
+      this.setState({
+        photos: [],
+      });
     }
-  }
+  };
 
   render() {
     const { album } = this.props;
     const { photos } = this.state;
     return (
-      <div className="album">
+      <div className="album" onClick={() => this.props.onClick(album.id)}>
         <p className="title">{album.title}</p>
         <div className="thumbnails">
           {photos.slice(0, 3).map((photo) => (
