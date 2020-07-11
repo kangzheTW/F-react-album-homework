@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import './Albums.scss';
 
 class Albums extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      albums: [],
-    };
-  }
-
   render() {
-    const { albums } = this.state;
+    const { albums } = this.props;
     return (
       <section className="Albums">
-        {albums.map(() => (
-          <div className="album">
-            <p className="title">Album title here...</p>
+        {albums.map((album) => (
+          <div className="album" key={album.id}>
+            <p className="title">{album.title}</p>
           </div>
         ))}
       </section>
