@@ -1,10 +1,27 @@
 .UserInfo {
   padding-top: 60px;
   width: 400px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  h3 {
+    color: grey;
+    font-weight: lighter;
+  }
 }
 
 
 .user-info-row {
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
+
+  .info-title {
+    font-weight: bold;
+  }
+  .info-content {
+    color: blue;
+  }
 }

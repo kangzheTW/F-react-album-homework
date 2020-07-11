@@ -4,8 +4,8 @@ import './UserInfo.scss';
 function UserInfoRow(props) {
   return (
     <div className="user-info-row">
-      <label>{props.label}</label>
-      <label>{props.content}</label>
+      <label className="info-title">{props.label}</label>
+      <label className="info-content">{props.content}</label>
     </div>
   );
 }
