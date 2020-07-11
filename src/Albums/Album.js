@@ -44,7 +44,7 @@ class Album extends Component {
         <p className="title">{album.title}</p>
         <div className="thumbnails">
           {photos.slice(0, 3).map((photo) => (
-            <div className="photo-thumbnail" key={photo.id}>
+            <div className="thumbnail" key={photo.id}>
               <img src={photo.thumbnailUrl} />
               <p>{photo.title}</p>
             </div>
