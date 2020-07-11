@@ -6,14 +6,13 @@ class Album extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: props.sequence === 0,
       photos: [],
     };
   }
 
   componentDidMount() {
-    const {album} = this.props;
-    if (this.state.expanded) {
+    const { album, showThumbnails } = this.props;
+    if (showThumbnails) {
       fetchPhotos(album.id).then((photos) => {
         this.setState({
           photos,
@@ -23,8 +22,8 @@ class Album extends Component {
   }
 
   render() {
-    const {album} = this.props;
-    const {photos} = this.state;
+    const { album } = this.props;
+    const { photos } = this.state;
     return (
       <div className="album">
         <p className="title">{album.title}</p>
